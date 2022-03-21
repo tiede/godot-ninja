@@ -1,0 +1,181 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Helten.tscn" type="PackedScene" id=1]
+[ext_resource path="res://MainScene.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Moent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HeltenAnimated.gd" type="Script" id=12]
+[ext_resource path="res://Tileset.tres" type="TileSet" id=13]
+[ext_resource path="res://Sprite/Baggrund/Baggrund_3.png" type="Texture" id=14]
+[ext_resource path="res://Sprite/Baggrund/Baggrund_1.png" type="Texture" id=15]
+[ext_resource path="res://Sprite/Baggrund/Baggrund_2.png" type="Texture" id=16]
+[ext_resource path="res://Sprite/Baggrund/Baggrund_7.png" type="Texture" id=17]
+[ext_resource path="res://Sprite/Tiles/Sort.png" type="Texture" id=24]
+[ext_resource path="res://Sprite/Skurken/Skurk_2.png" type="Texture" id=41]
+[ext_resource path="res://Sprite/Skurken/Skurk_4.png" type="Texture" id=42]
+[ext_resource path="res://Sprite/Skurken/Skurk_7.png" type="Texture" id=43]
+[ext_resource path="res://Sprite/Skurken/Skurk_10.png" type="Texture" id=44]
+[ext_resource path="res://Sprite/Skurken/Skurk_1.png" type="Texture" id=45]
+[ext_resource path="res://Sprite/Skurken/Skurk_3.png" type="Texture" id=46]
+[ext_resource path="res://Sprite/Skurken/Skurk_9.png" type="Texture" id=47]
+[ext_resource path="res://Sprite/Skurken/Skurk_8.png" type="Texture" id=48]
+[ext_resource path="res://Sprite/Skurken/Skurk_5.png" type="Texture" id=49]
+[ext_resource path="res://Sprite/Skurken/Skurk_6.png" type="Texture" id=50]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 130, 210 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 45 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 42 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 43 ), ExtResource( 48 ), ExtResource( 47 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "Loeb",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 175.5, 232.5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 2528, 83 )
+
+[node name="MainScene" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Helten" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1164, -666 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="HeltenAnimated" type="KinematicBody2D" parent="."]
+position = Vector2( 32, 564 )
+scale = Vector2( 0.292952, 0.421766 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HeltenAnimated"]
+frames = ExtResource( 2 )
+animation = "Hop"
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeltenAnimated"]
+position = Vector2( 148, -12 )
+shape = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="HeltenAnimated"]
+scale = Vector2( 3.41353, 2.37098 )
+current = true
+limit_left = 0
+limit_right = 2500
+limit_bottom = 650
+limit_smoothed = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.5
+drag_margin_top = 0.5
+drag_margin_right = 0.5
+drag_margin_bottom = 0.5
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 8, 592 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 1
+z_as_relative = false
+tile_set = ExtResource( 13 )
+format = 1
+tile_data = PoolIntArray( -786436, 11, 0, -589828, 11, 0, -393220, 11, 0, -196612, 11, 0, -65540, 11, 0, 65532, 11, 0, 131072, 0, 0, 262140, 11, 0, 196649, 5, 0, 262161, 2, 0, 262165, 1, 0, 262169, 0, 0, 327714, 5, 0, 458748, 11, 0, 393225, 2, 0, 393228, 5, 0, 393266, 19, 0, 393270, 18, 0, 393274, 17, 0, 458820, 2, 0, 458824, 1, 0, 458828, 0, 0, 524378, 10, 0, 655356, 11, 0, 589921, 2, 0, 589925, 0, 0, 589932, 5, 0, 589938, 5, 0, 589944, 2, 0, 589948, 1, 0, 589952, 0, 0, 655445, 5, 0, 786428, 11, 0, 786522, 9, 0, 851968, 1, 0, 851969, 1, 0, 851970, 1, 0, 851971, 0, 0, 851999, 15, 0, 852003, 7, 0, 852014, 10, 0, 852101, 2, 0, 852105, 0, 0, 983036, 11, 0, 917504, 9, 0, 917505, 9, 0, 917506, 9, 0, 917507, 9, 0, 917541, 7, 0, 917550, 9, 0, 983041, 9, 0, 983042, 9, 0, 983043, 9, 0, 983046, 20, 0, 983048, 20, 0, 983051, 16, 0, 983055, 1, 0, 983059, 1, 0, 983060, 14, 0, 983064, 20, 0, 983067, 20, 0, 983071, 11, 0, 983079, 7, 0, 1048576, 9, 0, 1048577, 9, 0, 1048578, 9, 0, 1048581, 20, 0, 1048584, 20, 0, 1048588, 11, 0, 1048590, 11, 0, 1048591, 11, 0, 1048593, 11, 0, 1048595, 11, 0, 1048599, 20, 0, 1048600, 20, 0, 1048603, 20, 0, 1048604, 20, 0, 1048607, 11, 0, 1048608, 11, 0, 1048609, 11, 0, 1048610, 11, 0, 1048611, 11, 0, 1048614, 11, 0, 1048616, 14, 0, 1048618, 15, 0, 1048619, 15, 0, 1048620, 15, 0, 1048621, 15, 0, 1048622, 15, 0, 1048623, 15, 0, 1048624, 15, 0, 1048625, 15, 0, 1048626, 15, 0, 1048627, 15, 0, 1048628, 15, 0, 1048629, 15, 0, 1048630, 15, 0, 1048631, 15, 0, 1048632, 15, 0, 1048636, 15, 0, 1048637, 0, 0, 1048639, 14, 0, 1048640, 15, 0, 1048641, 15, 0, 1048642, 15, 0, 1048643, 15, 0, 1048644, 15, 0, 1048645, 15, 0, 1048646, 15, 0, 1048647, 15, 0, 1048648, 15, 0, 1048649, 15, 0, 1048650, 15, 0, 1048651, 15, 0, 1048652, 15, 0, 1048653, 15, 0, 1048654, 15, 0, 1048655, 15, 0, 1048656, 15, 0, 1048657, 15, 0, 1048658, 15, 0, 1048659, 15, 0, 1048660, 15, 0, 1048661, 1, 0, 1048662, 1, 0, 1048663, 15, 0, 1048664, 15, 0, 1048665, 15, 0, 1048666, 15, 0, 1048667, 15, 0, 1048668, 15, 0, 1048669, 15, 0, 1048670, 15, 0, 1048671, 15, 0, 1048675, 17, 0, 1245180, 11, 0, 1507324, 11, 0, 1769468, 11, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Moent" parent="." instance=ExtResource( 3 )]
+position = Vector2( 740, 638 )
+
+[node name="Moent2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1388, 630 )
+
+[node name="Moent3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1542, 942 )
+
+[node name="Skurken" type="KinematicBody2D" parent="."]
+position = Vector2( 680, -696 )
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Skurken"]
+frames = SubResource( 3 )
+animation = "Loeb"
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skurken"]
+shape = SubResource( 5 )
+
+[node name="Baggrund" type="ParallaxBackground" parent="."]
+
+[node name="Sort baggrund" type="ParallaxLayer" parent="Baggrund"]
+scale = Vector2( 4, 1 )
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 256, 256 )
+
+[node name="Sprite" type="Sprite" parent="Baggrund/Sort baggrund"]
+texture = ExtResource( 24 )
+centered = false
+
+[node name="Maanen" type="ParallaxLayer" parent="Baggrund"]
+position = Vector2( 259, -21 )
+scale = Vector2( 0.75, 0.75 )
+motion_scale = Vector2( 0.2, 1 )
+
+[node name="Sprite" type="Sprite" parent="Baggrund/Maanen"]
+position = Vector2( 749, 141 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 17 )
+
+[node name="Bagerst" type="ParallaxLayer" parent="Baggrund"]
+motion_scale = Vector2( 0.3, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Baggrund/Bagerst"]
+texture = ExtResource( 14 )
+centered = false
+
+[node name="Midten" type="ParallaxLayer" parent="Baggrund"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Baggrund/Midten"]
+position = Vector2( -1.99999, 44 )
+scale = Vector2( 1.01042, 1.02993 )
+texture = ExtResource( 16 )
+centered = false
+
+[node name="Forrest" type="ParallaxLayer" parent="Baggrund"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Baggrund/Forrest"]
+position = Vector2( 1, 4 )
+texture = ExtResource( 15 )
+centered = false
+
+[node name="Faldezone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Faldezone"]
+position = Vector2( 2606, 1467 )
+shape = SubResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 35.0
+margin_top = 25.0
+margin_right = 285.0
+margin_bottom = 80.0
+
+[connection signal="body_entered" from="Faldezone" to="HeltenAnimated" method="_on_Faldezone_body_entered"]
