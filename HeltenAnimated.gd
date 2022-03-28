@@ -35,14 +35,18 @@ func _physics_process(_delta):
 	bevaegelse.x = lerp(bevaegelse.x,0,0.2)
 	
 	HUD.set_antalpointtekst(point)
-	HUD.set_antallivtekst(liv)
+#	HUD.set_antallivtekst(liv)
+	HUD.set_antallivtekst(Global.liv)
 
 func tilfoej_point():
 	point += 1
 	print("Point : " + str(point))
 
 func _on_Faldezone_body_entered(body):
-	print_debug(liv)
-	liv -= 1
-	set_position(Vector2(32,564))
-	print("Liv : " + str(liv))
+#	print_debug(liv)
+#	liv -= 1
+#	set_position(Vector2(32,564))
+#	print("Liv : " + str(liv))
+	
+	Global.fjern_liv()
+	get_tree().reload_current_scene()
