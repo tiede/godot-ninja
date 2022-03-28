@@ -42,7 +42,7 @@ func tilfoej_point():
 	print("Point : " + str(point))
 
 func _on_Faldezone_body_entered(body):
-	print_debug(liv)
 	liv -= 1
-	set_position(Vector2(32,564))
 	print("Liv : " + str(liv))
+	get_node("/root/MainScene/SoundScream").play()
+	set_position(Vector2(32,564))
