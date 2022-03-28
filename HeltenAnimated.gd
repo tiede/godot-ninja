@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var	heltenAnimated = $AnimatedSprite
 onready var HUD = get_node("/root/MainScene/CanvasLayer/HUD")
+onready var scream = get_node("/root/MainScene/SoundScream")
 
 var point : int =  0
 var liv : int = 3
@@ -44,5 +45,5 @@ func tilfoej_point():
 func _on_Faldezone_body_entered(body):
 	liv -= 1
 	print("Liv : " + str(liv))
-	get_node("/root/MainScene/SoundScream").play()
+	scream.play()
 	set_position(Vector2(32,564))
