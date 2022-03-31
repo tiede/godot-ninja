@@ -42,7 +42,9 @@ func tilfoej_point():
 	print("Point : " + str(point))
 
 func _on_Faldezone_body_entered(body):
-	print_debug(liv)
+	mistet_liv()
+	
+func mistet_liv():
 	liv -= 1
 	set_position(Vector2(32,564))
-	print("Liv : " + str(liv))
+	print_debug("Liv : " + str(liv))
