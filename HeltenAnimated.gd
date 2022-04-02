@@ -46,5 +46,6 @@ func _on_Faldezone_body_entered(body):
 	
 func mistet_liv():
 	liv -= 1
+	$Scream.play()
 	set_position(Vector2(32,564))
 	print_debug("Liv : " + str(liv))
