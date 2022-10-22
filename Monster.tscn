@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sprite/Skurken/Skurk_1.png" type="Texture" id=1]
 [ext_resource path="res://Sprite/Skurken/Skurk_5.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Sprite/Skurken/Skurk_4.png" type="Texture" id=9]
 [ext_resource path="res://Sprite/Skurken/Skurk_2.png" type="Texture" id=10]
 [ext_resource path="res://Monster.gd" type="Script" id=11]
+[ext_resource path="res://Sound/Whistle.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Sprite/Baggrund/Baggrund_7.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -27,14 +29,25 @@ extents = Vector2( 215, 250 )
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 11 )
 
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 13 )
+energy = 2.0
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Loeb"
-frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )
 shape = SubResource( 2 )
+
+[node name="Whistle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = -14.039
+autoplay = true
+max_distance = 500.0
+attenuation = 2.92815
 
 [connection signal="body_entered" from="." to="." method="_on_Monster_body_entered"]
